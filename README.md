@@ -1,7 +1,7 @@
 # Zomato Cart Offer Testing Project
 
 **Assignment by**: Narendra Kumar  
-**Project**: Zomato Cart Offer Automation Testing  
+**Project**: Zomato Cart Offer - Automation Testing  
 **Description**: Automated test suite for cart offer functionality using Python pytest framework and Flask mock service.
 
 This project implements comprehensive test automation for Zomato's cart offer system, testing various scenarios including happy paths, negative cases, and corner cases.
@@ -41,6 +41,22 @@ python3 -m pytest test_cart_offers.py -v
 
 HTML reports provide detailed test execution results with response logs for debugging.
 
+### How to Generate HTML Report After Running Tests
+
+**After running `./run_tests.sh`, you have two options:**
+
+#### Option 1: Use the HTML Report Script (Easiest - Runs Tests + Generates Report)
+```bash
+# This script runs the tests AND generates HTML report
+./generate_html_report.sh
+```
+
+#### Option 2: Generate HTML Report Separately (If Tests Already Ran)
+```bash
+# If you already ran ./run_tests.sh, just generate the report:
+python3 -m pytest test_cart_offers.py --html=report.html --self-contained-html -v
+```
+
 ### Step-by-Step Guide to Generate HTML Report
 
 #### Step 1: Install pytest-html (if not already installed)
@@ -52,12 +68,16 @@ pip3 install pytest-html
 
 #### Step 2: Generate HTML Report
 
-**Option A: Using the script (recommended)**
+**Option A: Using the script (recommended - runs tests + generates report)**
 ```bash
 ./generate_html_report.sh        # Linux/Mac
 ```
+This script will:
+- ✅ Check and install pytest-html if needed
+- ✅ Run all tests
+- ✅ Generate HTML report with detailed logs
 
-**Option B: Direct command**
+**Option B: Direct command (after running tests separately)**
 ```bash
 # Simple HTML report
 python3 -m pytest test_cart_offers.py --html=report.html --self-contained-html
@@ -94,6 +114,11 @@ python3 -m pytest test_cart_offers.py -v
 ### Run with coverage report
 ```bash
 python3 -m pytest test_cart_offers.py --cov=mock_service --cov-report=term-missing
+```
+
+### Generate HTML report (quick way)
+```bash
+./generate_html_report.sh
 ```
 
 ### Run specific test class
